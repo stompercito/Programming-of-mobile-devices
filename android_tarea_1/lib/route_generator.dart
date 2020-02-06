@@ -1,5 +1,5 @@
-import 'package:android_actividad_4/main.dart';
-import 'package:android_actividad_4/second_page.dart';
+import 'package:android_tarea_1/main.dart';
+import 'package:android_tarea_1/second_page.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
