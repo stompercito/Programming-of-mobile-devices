@@ -17,20 +17,38 @@ class ThirdPage extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(24.0),
-              child: TextField(
-                controller: _textController,
-                maxLength: 10,
-                decoration: InputDecoration(
-                  labelText: "Ingrese palabra",
-                  hintText: "Palabra",
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                Padding(padding: EdgeInsets.all(10.0),
+                  child: MaterialButton(
+                    child: Text("Carita 1"),
+                    color: Colors.grey,
+                    onPressed: () {
+                    Navigator.of(context).pop("Carita 1");
+                    },
+                  ),
                 ),
-              ),
+                Padding(padding: EdgeInsets.all(10.0),
+                  child: MaterialButton(
+                    child: Text("Carita 2"),
+                    color: Colors.grey,
+                    onPressed: () {
+                    Navigator.of(context).pop("Carita 2");
+                    },
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(10.0),
+                  child: MaterialButton(
+                    child: Text("Carita 3"),
+                    color: Colors.grey,
+                    onPressed: () {
+                    Navigator.of(context).pop("Carita 3");
+                    },
+                  ),
+                ),
+              ],
             ),
-            MaterialButton(
-              child: Text("Back"),
-              onPressed: () {
-                Navigator.of(context).pop(_textController.text);
-              },
             ),
           ],
         ),

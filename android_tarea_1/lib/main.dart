@@ -26,8 +26,8 @@ class PageOne extends StatefulWidget {
 
 class _PageOneState extends State<PageOne> {
   String _params = "hola desde p1";
-  String _callBackParams2;
-  String _callBackParams3;
+  String _callBackParams2 = "";
+  String _callBackParams3 = "";
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
