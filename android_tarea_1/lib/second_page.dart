@@ -9,10 +9,30 @@ class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: Text("Pantalla 2"),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  const Color(0xFF3366FF),
+                  const Color(0xFF00CCFF),
+                ],
+            ),
+          ),
+        ),  
       ),
-      body: Center(
+              
+      body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  const Color(0xFF3366FF),
+                  const Color(0xFF00CCFF),
+                ],
+            ),
+          ),
         child: Column(
           children: <Widget>[
             Padding(
@@ -22,14 +42,14 @@ class SecondPage extends StatelessWidget {
                 maxLength: 10,
                 decoration: InputDecoration(
                   labelText: "Ingrese palabra",
-                  hintText: "Palabra",
+                  hintText: "$texto",
                 ),
               ),
             ),
             MaterialButton(
               child: Text("Back"),
               onPressed: () {
-                Navigator.of(context).pop(_textController.text);
+                Navigator.of(context).pop(texto + " " + _textController.text);
               },
             ),
           ],

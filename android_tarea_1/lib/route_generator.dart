@@ -1,5 +1,6 @@
 import 'package:android_tarea_1/main.dart';
 import 'package:android_tarea_1/second_page.dart';
+import 'package:android_tarea_1/third_page.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -20,6 +21,16 @@ class RouteGenerator {
           );
         } else
           return _errorPage();
+          break;
+      case "/thirdPage":  
+      if (args is String) {
+          return MaterialPageRoute(
+            builder: (_) => ThirdPage(
+              texto: args,
+            ),
+          );
+        } else
+          return _errorPage();  
         break;
       default:
         return _errorPage();

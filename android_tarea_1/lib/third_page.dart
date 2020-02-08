@@ -4,7 +4,7 @@ class ThirdPage extends StatelessWidget {
   final String texto;
   TextEditingController _textController = TextEditingController();
 
-  ThirdPage({Key key, this.texto}) : super(key: key);
+  ThirdPage({Key key,  this.texto}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,3 +38,4 @@ class ThirdPage extends StatelessWidget {
     );
   }
 }
+

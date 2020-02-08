@@ -1,4 +1,4 @@
-import 'package:android_actividad_dos/list_item.dart';
+import 'package:android_actividad_2/list_item.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

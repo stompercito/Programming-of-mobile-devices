@@ -1,74 +1,51 @@
-import 'package:act_routes/route_generator.dart';
+
 import 'package:flutter/material.dart';
-
+ 
 void main() => runApp(MyApp());
-
+ 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ruteo',
-      initialRoute: "/",
-      // home: PageOne(),
-      onGenerateRoute: RouteGenerator.generateRoute,
+      title: 'Mi primera app',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Material App Bar'),
+        ),
+        body: HomePage(),
+      ),
     );
   }
 }
 
-class PageOne extends StatelessWidget {
-  String _params = "hola desde p1";
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
+class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
 
-  PageOne({
-    Key key,
-  }) : super(key: key);
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _counter = 7;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // key al a scaffold para acceder al scaffold desde otro widget hijo
-      key: _scaffoldKey,
-      appBar: AppBar(
-        title: Text('Pagina 1'),
-      ),
-      body: Center(
-        child: Container(
-          child: MaterialButton(
-            child: Text(
-              "Next page",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text("$_counter"),
+          MaterialButton(
+            child: Text("Add"),
             color: Colors.blue,
             onPressed: () {
-              _openSecondPage(context);
+              setState(() {
+                ++_counter;
+              });
+              
             },
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _openSecondPage(BuildContext context) async {
-    String _datoRetornadoDeSecondPage;
-    // await para esperar que se regrese dato desde la pantalla que se abre
-    await Navigator.of(context)
-        .pushNamed(
-      "/secondPage",
-      arguments: _params,
-    ).then(
-      (response) {
-        _datoRetornadoDeSecondPage = response;
-      },
-    );
-
-    // acceso al scaffold para mostrar snackbar
-    _scaffoldKey.currentState.showSnackBar(
-      SnackBar(
-        content: Text(
-          "Texto regresado: $_datoRetornadoDeSecondPage",
-        ),
+          )
+        ],
       ),
     );
   }
