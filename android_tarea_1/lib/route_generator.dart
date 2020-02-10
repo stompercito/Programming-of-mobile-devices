@@ -16,7 +16,7 @@ class RouteGenerator {
         if (args is String) {
           return MaterialPageRoute(
             builder: (_) => SecondPage(
-              texto: args,
+              texto1: args,
             ),
           );
         } else

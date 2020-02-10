@@ -1,33 +1,54 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+String texto;
+BuildContext cotx;
+
 class SecondPage extends StatelessWidget {
-  final String texto;
-  final _random = new Random();
-  int _number = 384;
+  String texto1;
   TextEditingController _textController = TextEditingController();
 
-  SecondPage({Key key, this.texto}) : super(key: key);
+  SecondPage({Key key, this.texto1}) : super(key: key);
+  
+  @override
+  Widget build(BuildContext context) {
+    texto = texto1;
+    cotx = context;
+    return MaterialApp(
+      home: Scaffold(  
+        appBar: AppBar(
+          title: Text("Pantalla 2"),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [
+                    const Color(0xFF3366FF),
+                    const Color(0xFF00CCFF),
+                  ],
+              ),
+            ),
+          ),  
+        ),
+        body: HomePage(),
+      ),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  HomePage({Key key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final _random = new Random();
+  int _number = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-      appBar: AppBar(
-        title: Text("Pantalla 2"),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  const Color(0xFF3366FF),
-                  const Color(0xFF00CCFF),
-                ],
-            ),
-          ),
-        ),  
-      ),
-              
-      body: Container(
+    return Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
                 colors: [
@@ -64,20 +85,23 @@ class SecondPage extends StatelessWidget {
             MaterialButton(
               child: Text("Generar"),
               onPressed: () {
+                setState(() {
                 _number = _random.nextInt( 1000 - 0);
+              });
+                
               },
             color: Colors.white,
             ),
             MaterialButton(
               child: Text("Guardar"),
               onPressed: () {
-                Navigator.of(context).pop(texto + _number.toString());
+                Navigator.of(cotx).pop(texto + _number.toString());
               },
             color: Colors.white,
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }
+
