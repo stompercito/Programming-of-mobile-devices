@@ -21,6 +21,10 @@ class _HomeState extends State<Home> {
         title: Text(widget.title),
         actions: <Widget>[
           IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {},
+          ),
+          IconButton(
             icon: Icon(Icons.person),
             onPressed: () {
               Navigator.of(context).push(
@@ -28,10 +32,6 @@ class _HomeState extends State<Home> {
               );
             },
           ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
-          )
         ],
       ),
       body: ListView(
@@ -81,3 +81,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+

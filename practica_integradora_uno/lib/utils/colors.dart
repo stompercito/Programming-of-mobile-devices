@@ -14,14 +14,14 @@
 
 import 'package:flutter/material.dart';
 
-const kShrinePink50 = const Color(0xFFFFEEAE6);
-const kShrinePink100 = const Color(0xFFFFEDBD0);
-const kShrinePink300 = const Color(0xFFFFBB8AC);
-const kShrinePink400 = const Color(0xFFFEAA4A4);
+const coffeNaranjaLigero62 = const Color(0xFFEC9762);
+const coffeNaranjaLigero7C = const Color(0xFFFABF7C);
+const coffeNaranjaGrisaceoClaro = const Color(0xFFBCB0A1);
+const coffeNaranjaGrisaceo = const Color(0xFF8B8175);
 
-const kShrineBrown900 = const Color(0xFFF442B2D);
+const coffeAzulOscuro = const Color(0xFF214254);
 
-const kShrineErrorRed = const Color(0xFFFC5032B);
+const coffeAzulGrisaceoOscuro = const Color(0xFF121B22);
 
-const kShrineSurfaceWhite = const Color(0xFFFFFFBFA);
-const kShrineBackgroundWhite = Colors.white;
+const coffeBlanco = Colors.white;
+
