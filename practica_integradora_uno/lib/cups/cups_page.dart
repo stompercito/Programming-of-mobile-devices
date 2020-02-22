@@ -6,7 +6,7 @@ import 'package:practica_integradora_uno/profile.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 
 class CupsPage extends StatelessWidget {
-  final ProductList products;
+  ProductList products;
   CupsPage({
     Key key,
     @required this.products,
@@ -40,7 +40,7 @@ class CupsPage extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ItemCups(
             cups: products.cupsLista[index],
-            cartLista: products.cartLista,
+            producto: products,
           );
         },
       ),

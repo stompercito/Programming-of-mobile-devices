@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:practica_integradora_uno/home/item_home.dart';
 import 'package:practica_integradora_uno/models/product_repository.dart';
+import 'package:practica_integradora_uno/models/product_cart.dart';
 import 'package:practica_integradora_uno/models/listOfProducts.dart';
-
 import 'package:practica_integradora_uno/drinks/drinks_page.dart';
-
 import 'package:practica_integradora_uno/cups/cups_page.dart';
-
 import 'package:practica_integradora_uno/grains/grains_page.dart';
-
+import 'package:practica_integradora_uno/cart/cart.dart';
 import 'package:practica_integradora_uno/profile.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 
@@ -30,7 +28,7 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: _openCartPage,
           ),
           IconButton(
             icon: Icon(Icons.person),
@@ -99,5 +97,17 @@ class _HomeState extends State<Home> {
 
     });
   }
+
+   void _openCartPage() async{
+    products.cartLista = [];
+    await Navigator.of(context).push(        
+      MaterialPageRoute(builder: (context) => Cart(producto: products.cartLista),
+      ),
+    ).then((updateProducts) {
+      products = updateProducts;
+    });
+
+  }
+
 }
 

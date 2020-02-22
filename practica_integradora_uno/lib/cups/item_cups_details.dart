@@ -13,11 +13,12 @@ import 'package:practica_integradora_uno/models/product_repository.dart';
 class CupsDetailPage extends StatefulWidget {
   ProductCups cup;
   ProductList productoNuevo;
-  List<ProductCart> productsList;
 
   CupsDetailPage({
     Key key,
     @required this.cup,
+    @required this.productoNuevo,
+
   }) : super(key: key);
 
   @override
@@ -238,14 +239,13 @@ class _DetailCupsState extends State<CupsDetailPage> {
       ),
     );
   }
+
   void _openCartPage() async{
-    widget.productsList.add(ProductCart.addToCart("${widget.cup.productTitle}", widget.cup.productAmount, widget.cup.productPrice, ProductType.TAZAS ));
-    print(widget.productsList.length);
     await Navigator.of(context).push(        
-      MaterialPageRoute(builder: (context) => Cart(producto: widget.productsList),
+      MaterialPageRoute(builder: (context) => Cart(producto: ProductList.setCartList(widget.productoNuevo.cartLista ,ProductCart.addToCart("${widget.cup.productTitle}", widget.cup.productAmount, widget.cup.productPrice, ProductType.TAZAS ))),
       ),
     ).then((updateProducts) {
-      widget.productoNuevo = ProductList.setCart(updateProducts);
+      widget.productoNuevo = updateProducts;
     });
 
   }
@@ -254,7 +254,7 @@ class _DetailCupsState extends State<CupsDetailPage> {
     //widget.productoNuevo.cups.liked = widget.cup.liked;
     setState(() {
       widget.cup.productColor = ProductColor.WHITE;  
-      widget.productoNuevo = ProductList.setCup(widget.cup);
+      widget.productoNuevo = ProductList.setCup(widget.cup); //aqui se borra la lista del carrito
       widget.cup = widget.productoNuevo.cups;
     });
   }
@@ -263,7 +263,7 @@ class _DetailCupsState extends State<CupsDetailPage> {
     //widget.productoNuevo.cups.liked = widget.cup.liked;
     setState(() {
       widget.cup.productColor = ProductColor.ORANGE;    
-      widget.productoNuevo = ProductList.setCup(widget.cup);
+      widget.productoNuevo = ProductList.setCup(widget.cup); //aqui se borra la lista del carrito
       widget.cup = widget.productoNuevo.cups; 
     });
   }
@@ -272,7 +272,7 @@ class _DetailCupsState extends State<CupsDetailPage> {
     //widget.productoNuevo.cups.liked = widget.cup.liked;
     setState(() {
       widget.cup.productColor = ProductColor.BLUE;  
-      widget.productoNuevo = ProductList.setCup(widget.cup);
+      widget.productoNuevo = ProductList.setCup(widget.cup); //aqui se borra la lista del carrito
       widget.cup = widget.productoNuevo.cups;
     });
   }

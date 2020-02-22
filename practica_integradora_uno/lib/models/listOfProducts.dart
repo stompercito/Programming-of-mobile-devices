@@ -37,10 +37,13 @@ class ProductList {
   }
 
   static ProductList loadList(){
+    List<ProductCart> cartList = [];
     return ProductList(
       drinksLista: ProductRepository.loadProducts(ProductType.BEBIDAS),
       grainsLista: ProductRepository.loadProducts(ProductType.GRANO),
-      cupsLista: ProductRepository.loadProducts(ProductType.TAZAS)
+      cupsLista: ProductRepository.loadProducts(ProductType.TAZAS),
+      cartLista: cartList,
+      
     );
   }
 
@@ -52,6 +55,12 @@ class ProductList {
      grains: ProductGrains.setGrain(pro.grains),*/
 
     );
+  }
+
+  static setCartList(List<ProductCart> temp, ProductCart pro){
+    //Hacer logica para saber si se añade o no un elemento. Tomar como dato extra el objeto para saber las condicionales de carrito.
+    temp.add(pro);
+    return temp;
   }
 
   static setCup(ProductCups cups){

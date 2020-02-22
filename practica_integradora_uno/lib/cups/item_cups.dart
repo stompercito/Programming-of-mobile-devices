@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:practica_integradora_uno/models/listOfProducts.dart';
 import 'package:practica_integradora_uno/models/product_cups.dart'; 
 import 'package:practica_integradora_uno/cups/item_cups_details.dart'; 
 import 'package:practica_integradora_uno/models/product_cart.dart';
+import 'package:practica_integradora_uno/models/product_grains.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 
 class ItemCups extends StatefulWidget {
   ProductCups cups;
-  List<ProductCart> cartLista;
+  ProductList producto;
   ItemCups({
     Key key,
     @required this.cups,
-    @required this.cartLista,
+    @required this.producto,
   }) : super(key: key);
 
   @override
@@ -85,7 +87,7 @@ class _ItemCupsState extends State<ItemCups> {
 
   void _openDetailCupsPage() async {
     await Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => CupsDetailPage(cup: widget.cups),
+      MaterialPageRoute(builder: (context) => CupsDetailPage(cup: widget.cups, productoNuevo: widget.producto),
       ),
     ).then((updateProducts) {
       setState(() {
