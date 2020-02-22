@@ -6,7 +6,7 @@ import 'package:practica_integradora_uno/models/product_cart.dart';
 import 'package:practica_integradora_uno/profile.dart';
 
 class Cart extends StatefulWidget {
-  final List<ProductCart> producto;
+  ProductList producto;
   Cart({
     Key key,
     @required this.producto,
@@ -21,7 +21,7 @@ class _CartState extends State<Cart> {
   @override
   void initState() {
     super.initState();
-    for (var item in widget.producto) {
+    for (var item in widget.producto.cartLista) {
       _total += (item.productPrice * item.productAmount);
     }
   }
@@ -49,11 +49,11 @@ class _CartState extends State<Cart> {
           Container(
             height: MediaQuery.of(context).size.height * 0.9,
             child: ListView.builder(
-              itemCount: widget.producto.length,
+              itemCount: widget.producto.cartLista.length,
               itemBuilder: (BuildContext context, int index) {
                 return ItemCart(
                   onAmountUpdated: _priceUpdate,
-                  product: widget.producto[index],
+                  product: widget.producto.cartLista[index],
                 );
               },
             ),
@@ -75,7 +75,7 @@ class _CartState extends State<Cart> {
 
   void _backUpAndCart(){
     //widget.productoNuevo.cups.liked = widget.cup.liked;
-      Navigator.of(context).pop(ProductList.setCart(widget.producto));
+      Navigator.of(context).pop(ProductList.setCart(widget.producto, widget.producto.cartLista));
 
   }
 }

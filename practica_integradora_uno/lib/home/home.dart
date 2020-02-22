@@ -28,7 +28,14 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: _openCartPage,
+            onPressed: () async{ 
+            await Navigator.of(context).push(        
+              MaterialPageRoute(builder: (context) => Cart(producto: products),
+              ),
+            ).then((updateProducts) {
+              products = updateProducts;
+            });
+            },
           ),
           IconButton(
             icon: Icon(Icons.person),
@@ -96,17 +103,6 @@ class _HomeState extends State<Home> {
       products = updateProducts;
 
     });
-  }
-
-   void _openCartPage() async{
-    products.cartLista = [];
-    await Navigator.of(context).push(        
-      MaterialPageRoute(builder: (context) => Cart(producto: products.cartLista),
-      ),
-    ).then((updateProducts) {
-      products = updateProducts;
-    });
-
   }
 
 }

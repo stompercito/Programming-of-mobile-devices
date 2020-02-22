@@ -5,6 +5,7 @@ import 'package:practica_integradora_uno/cups/item_cups_details.dart';
 import 'package:practica_integradora_uno/models/product_cart.dart';
 import 'package:practica_integradora_uno/models/product_grains.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
+import 'package:practica_integradora_uno/cart/cart.dart';
 
 class ItemCups extends StatefulWidget {
   ProductCups cups;
@@ -91,6 +92,7 @@ class _ItemCupsState extends State<ItemCups> {
       ),
     ).then((updateProducts) {
       setState(() {
+        widget.producto = updateProducts;
         widget.cups = ProductCups.setCup(updateProducts.cups);
         //if(updateProducts.cart != null)
           //widget.cartLista.add(updateProducts.cart);

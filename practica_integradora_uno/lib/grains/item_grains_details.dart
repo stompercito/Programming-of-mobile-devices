@@ -93,13 +93,13 @@ class _DetailGrainsState extends State<GrainsDetailPage> {
     //widget.productoNuevo.cups.liked = widget.cup.liked;
     setState(() {
       widget.grain.liked = !widget.grain.liked;
-      widget.productoNuevo = ProductList.setGrain(widget.grain);   
+      widget.productoNuevo = ProductList.setGrain(widget.productoNuevo, widget.grain);   
     });
   }
 
   void _backUpAndCart(){
     //widget.productoNuevo.cups.liked = widget.cup.liked;
-      widget.productoNuevo = ProductList.setGrain(widget.grain);
+      widget.productoNuevo = ProductList.setGrain(widget.productoNuevo, widget.grain);
       Navigator.of(context).pop(widget.productoNuevo);
 
   }

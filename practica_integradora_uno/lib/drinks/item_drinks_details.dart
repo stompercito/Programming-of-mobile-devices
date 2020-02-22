@@ -93,13 +93,13 @@ class _DetailDrinkState extends State<DrinkDetailPage> {
     //widget.productoNuevo.drinks.liked = widget.drink.liked;
     setState(() {
       widget.drink.liked = !widget.drink.liked;
-      widget.productoNuevo = ProductList.setDrink(widget.drink);   
+      widget.productoNuevo = ProductList.setDrink(widget.productoNuevo, widget.drink);   
     });
   }
 
   void _backUpAndCart(){
     //widget.productoNuevo.drinks.liked = widget.drink.liked;
-      widget.productoNuevo = ProductList.setDrink(widget.drink);
+      widget.productoNuevo = ProductList.setDrink(widget.productoNuevo, widget.drink);
       Navigator.of(context).pop(widget.productoNuevo);
 
   }

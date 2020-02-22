@@ -32,9 +32,7 @@ class ProductList {
     this.cups,
     this.drinks,
     this.grains,
-  }){
-    
-  }
+  });
 
   static ProductList loadList(){
     List<ProductCart> cartList = [];
@@ -47,38 +45,63 @@ class ProductList {
     );
   }
 
-  static setCart(List<ProductCart> pro){
+  static setCart(ProductList p, List<ProductCart> pro){
     return ProductList(
-     cartLista: pro,
-     /*cups: ProductCups.setCup(pro.cups),
-     drinks: ProductDrinks.setDrink(pro.drinks),
-     grains: ProductGrains.setGrain(pro.grains),*/
+      drinksLista: p.drinksLista,
+      grainsLista: p.grainsLista,
+      cupsLista: p.cupsLista,
+      cartLista: pro,
+      cart: p.cart,
+      cups: p.cups,
+      drinks: p.drinks,
+      grains: p.grains,
 
     );
   }
 
-  static setCartList(List<ProductCart> temp, ProductCart pro){
+  static setCartList(ProductList p, List<ProductCart> temp, ProductCart pro){
     //Hacer logica para saber si se añade o no un elemento. Tomar como dato extra el objeto para saber las condicionales de carrito.
     temp.add(pro);
-    return temp;
+    return setCart(p, temp);
   }
 
-  static setCup(ProductCups cups){
+  static setCup(ProductList p, ProductCups cups){
     return ProductList(
-      cups: ProductCups.setCup(cups)
+      drinksLista: p.drinksLista,
+      grainsLista: p.grainsLista,
+      cupsLista: p.cupsLista,
+      cartLista: p.cartLista,
+      cart: p.cart,
+      cups: ProductCups.setCup(cups),
+      drinks: p.drinks,
+      grains: p.grains,
     );
   }
   
 
-  static setDrink(ProductDrinks drink){
+  static setDrink(ProductList p, ProductDrinks drink){
     return ProductList(
-      drinks: ProductDrinks.setDrink(drink)
+      drinksLista: p.drinksLista,
+      grainsLista: p.grainsLista,
+      cupsLista: p.cupsLista,
+      cartLista: p.cartLista,
+      cart: p.cart,
+      cups: p.cups,
+      drinks: ProductDrinks.setDrink(drink),
+      grains: p.grains,
     );
   }
 
-  static setGrain(ProductGrains grain){
+  static setGrain(ProductList p, ProductGrains grain){
     return ProductList(
-      grains: ProductGrains.setGrain(grain)
+      drinksLista: p.drinksLista,
+      grainsLista: p.grainsLista,
+      cupsLista: p.cupsLista,
+      cartLista: p.cartLista,
+      cart: p.cart,
+      cups: p.cups,
+      drinks: p.drinks,
+      grains: ProductGrains.setGrain(grain),
     );
   }
 
