@@ -36,14 +36,15 @@ final ThemeData _coffeTheme = _buildCoffeTheme();
 ThemeData _buildCoffeTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
-    accentColor: coffeNaranjaLigero7C,
+    accentColor: coffeNaranjaGrisaceo,
     primaryColor: coffeAzulOscuro,
-    buttonColor: coffeNaranjaGrisaceo,
-    scaffoldBackgroundColor: coffeAzulOscuro,
-    cardColor: coffeNaranjaLigero62,
+    buttonColor: coffeNaranjaGrisaceo, //Botones
+    cardColor: coffeNaranjaGrisaceo, //cards
+    scaffoldBackgroundColor: coffeBlanco, //Fondo
     textSelectionColor: coffeBlanco,
+
     buttonTheme: base.buttonTheme.copyWith(
-      buttonColor: coffeNaranjaGrisaceo,
+      buttonColor: coffeNaranjaGrisaceoClaro,
       textTheme: ButtonTextTheme.normal,
     ),
     primaryIconTheme: base.iconTheme.copyWith(
@@ -59,21 +60,27 @@ TextTheme _buildCoffeTextTheme(TextTheme base) {
   return base.copyWith(
     headline: base.headline.copyWith(
       fontWeight: FontWeight.w500,
+      color: coffeBlanco,
     ),
     title: base.title.copyWith(
         fontSize: 18.0
+
     ),
     caption: base.caption.copyWith(
       fontWeight: FontWeight.w400,
       fontSize: 14.0,
     ),
+    body1: base.body1.copyWith(
+      fontWeight: FontWeight.w500,
+      fontSize: 13.0,
+    ),
     body2: base.body2.copyWith(
       fontWeight: FontWeight.w500,
-      fontSize: 16.0,
+      fontSize: 10.0,
     ),
   ).apply(
     fontFamily: 'Akzidenz-Grotesk',
     displayColor: coffeBlanco,
-    bodyColor: coffeBlanco,
+    bodyColor: coffeAzulGrisaceoOscuro, //Color de letra
   );
 }

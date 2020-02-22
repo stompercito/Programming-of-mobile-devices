@@ -1,14 +1,58 @@
 import 'package:practica_integradora_uno/models/product_drinks.dart';
 import 'package:practica_integradora_uno/models/product_grains.dart';
+import 'package:practica_integradora_uno/models/product_cups.dart';
 
 enum ProductType { BEBIDAS, GRANO, TAZAS }
 
 class ProductRepository {
   static List<dynamic> loadProducts(ProductType prodType) {
     // ----------------------       Tazas      ----------------------------//
-    //if (prodType == ProductType.TAZAS) {
-    // TODO: Agregar al menos 5 productos "cup/taza"
-    //}
+    if (prodType == ProductType.TAZAS)
+      return <ProductCups>[
+        ProductCups(
+          productTitle: "Fantasmin",
+          productDescription: "Taza de la marca nintendo, basado en el mundo de Mario Bros. Es un fantasma con la lengua de fuera.",
+          productImage:
+              "https://gameplanet-53f8.kxcdn.com/media/catalog/product/cache/4/image/9df78eab33525d08d6e5fb8d27136e95/t/a/taza-boo.jpg",
+          productColor: ProductColor.WHITE,
+          productAmount: 0,
+        ),
+        ProductCups(
+          productTitle: "Ser Chingona",
+          productDescription: "La taza muerta el mensaje, Ser CHINGONA no es casualidad.",
+          productImage:
+              "https://images-na.ssl-images-amazon.com/images/I/71dQzn5Xj%2BL._SX466_.jpg",
+          productColor: ProductColor.BLUE,
+          productAmount: 0,
+        ),
+        ProductCups(
+          productTitle: "Mejor Juntos",
+          productDescription:
+              "Par de tazas con imagenes y juntas muestran la frase, MEJOR JUNTOS. ",
+          productImage:
+              "https://www.dantacommerce.com/pub/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/i/m/img_20190104_013316.jpg",
+          productColor: ProductColor.WHITE,
+          productAmount: 0,
+        ),
+        ProductCups(
+          productTitle: "El Principito",
+          productDescription:
+              "Taza con estrellas, el principito esta encima de lal luna",
+          productImage:
+              "https://cdn.gandhi.com.mx/media/catalog/product/cache/1/image/370x/9df78eab33525d08d6e5fb8d27136e95/4/0/4028145051011.jpg",
+          productColor: ProductColor.WHITE,
+          productAmount: 0,
+        ),
+        ProductCups(
+          productTitle: "Taza Naranja",
+          productDescription:
+              "Una taza simple en su diseño. ",
+          productImage:
+              "https://web.promoopcion.com/media/catalog/product/cache/afad95d7734d2fa6d0a8ba78597182b7/T/A/TAZ-032-O.jpg",
+          productColor: ProductColor.ORANGE,
+          productAmount: 0,
+        ),
+      ];
 
     // ----------------------       Grano      ----------------------------//
     if (prodType == ProductType.GRANO)

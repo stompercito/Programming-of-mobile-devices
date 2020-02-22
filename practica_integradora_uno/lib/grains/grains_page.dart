@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:practica_integradora_uno/drinks/item_drinks.dart';
+import 'package:practica_integradora_uno/grains/item_grains.dart';
 import 'package:practica_integradora_uno/models/listOfProducts.dart';
 
 import 'package:practica_integradora_uno/profile.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 
-class DrinksPage extends StatelessWidget {
+class GrainsPage extends StatelessWidget {
   final ProductList products;
-  DrinksPage({
+  GrainsPage({
     Key key,
     @required this.products,
   }) : super(key: key);
@@ -16,7 +16,7 @@ class DrinksPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bebidas', style: TextStyle(color: coffeBlanco),),
+        title: Text('Café de grano', style: TextStyle(color: coffeBlanco),),
         leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: () {
           Navigator.of(context).pop(products);
         }),
@@ -36,10 +36,10 @@ class DrinksPage extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-        itemCount: products.drinksLista.length,
+        itemCount: products.grainsLista.length,
         itemBuilder: (BuildContext context, int index) {
-          return ItemDrinks(
-            drink: products.drinksLista[index],
+          return ItemGrains(
+            grain: products.grainsLista[index],
             cartLista: products.cartLista,
           );
         },

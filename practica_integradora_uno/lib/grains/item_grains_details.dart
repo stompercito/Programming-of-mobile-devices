@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:practica_integradora_uno/models/product_drinks.dart';
+import 'package:practica_integradora_uno/models/product_grains.dart';
 import 'package:practica_integradora_uno/models/listOfProducts.dart';
 import 'package:practica_integradora_uno/profile.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 import 'package:practica_integradora_uno/payment.dart';
 
-class DrinkDetailPage extends StatefulWidget {
-  ProductDrinks drink;
+class GrainsDetailPage extends StatefulWidget {
+  ProductGrains grain;
   ProductList productoNuevo;
-
-  DrinkDetailPage({
+  
+  GrainsDetailPage({
     Key key,
-    @required this.drink,
+    @required this.grain,
   }) : super(key: key);
 
   @override
-  _DetailDrinkState createState() => _DetailDrinkState();
+  _DetailGrainsState createState() => _DetailGrainsState();
 }
 
-class _DetailDrinkState extends State<DrinkDetailPage> {
+class _DetailGrainsState extends State<GrainsDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("${widget.drink.productTitle}", style: TextStyle(color: coffeBlanco),),
+        title: Text("${widget.grain.productTitle}", style: TextStyle(color: coffeBlanco),),
         leading: IconButton(icon: Icon(Icons.arrow_back), 
           onPressed: _backUpAndCart,
         ),
@@ -52,7 +52,7 @@ class _DetailDrinkState extends State<DrinkDetailPage> {
           Expanded(
             child: Container(
               child: Text(
-                "${widget.drink.productTitle}",
+                "${widget.grain.productTitle}",
                 style: Theme.of(context)
                     .textTheme
                     .title
@@ -69,7 +69,7 @@ class _DetailDrinkState extends State<DrinkDetailPage> {
                 bottomRight: Radius.circular(5.0),
               ),
               child: Image.network(
-                "${widget.drink.productImage}",
+                "${widget.grain.productImage}",
                 fit: BoxFit.fitHeight,
                 height: 180,
               ),
@@ -79,7 +79,7 @@ class _DetailDrinkState extends State<DrinkDetailPage> {
           IconButton(
             icon: Icon(
               Icons.favorite,
-              color: widget.drink.liked ? Colors.red : coffeAzulGrisaceoOscuro,
+              color: widget.grain.liked ? Colors.red : coffeAzulGrisaceoOscuro,
             ),
             onPressed: _productLiked,
             )
@@ -90,16 +90,16 @@ class _DetailDrinkState extends State<DrinkDetailPage> {
   }
 
   void _productLiked(){
-    //widget.productoNuevo.drinks.liked = widget.drink.liked;
+    //widget.productoNuevo.cups.liked = widget.cup.liked;
     setState(() {
-      widget.drink.liked = !widget.drink.liked;
-      widget.productoNuevo = ProductList.setDrink(widget.drink);   
+      widget.grain.liked = !widget.grain.liked;
+      widget.productoNuevo = ProductList.setGrain(widget.grain);   
     });
   }
 
   void _backUpAndCart(){
-    //widget.productoNuevo.drinks.liked = widget.drink.liked;
-      widget.productoNuevo = ProductList.setDrink(widget.drink);
+    //widget.productoNuevo.cups.liked = widget.cup.liked;
+      widget.productoNuevo = ProductList.setGrain(widget.grain);
       Navigator.of(context).pop(widget.productoNuevo);
 
   }

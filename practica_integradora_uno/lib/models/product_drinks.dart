@@ -10,7 +10,11 @@ class ProductDrinks {
   ProductSize productSize; // tamano del producto
   double productPrice; // precio del producto autocalculado
   final int productAmount; // cantidad de producto por comprar
-  final bool liked;
+  bool liked; //Si el producto tiene like
+  bool cartCH; //Si el chico ya esta en el carrito
+  bool cartM; //Si el mediano ya esta en el carrito
+  bool cartG; //Si el grande ya esta en el carrito
+
 
   ProductDrinks({
     @required this.productTitle,
@@ -19,33 +23,35 @@ class ProductDrinks {
     @required this.productSize,
     @required this.productAmount,
     this.liked = false,
+    this.cartCH = false,
+    this.cartM = false,
+    this.cartG = false,
   }) {
     // inicializa el precio de acuerdo a la size del producto
     productPrice = productPriceCalculator();
   }
 
-  // Mandar llamar este metodo cuando se cambie el tamanio del producto
-  // De esta manera el precio del nuevo tamanio del producto se autocalcula
-  // Por ejemplo cuando se cambie a M
-  //
-  // FlatButton(
-  //   child: Text("M"),
-  //   onPressed: () {
-  //     setState(() {
-  //       prod.productSize = ProductSize.M;
-  //       prod.productPrice = prods.productPriceCalculator();
-  //     });
-  //   },
-  // ),
-  //
-  //
+ static setDrink(ProductDrinks drink){
+    return ProductDrinks(
+      productTitle: drink.productTitle,
+      productDescription: drink.productDescription,
+      productImage: drink.productImage,
+      productSize: drink.productSize,
+      productAmount: drink.productAmount,
+      liked: drink.liked,
+      cartCH: drink.cartCH,
+      cartM: drink.cartM,
+      cartG: drink.cartG,
+    );
+  }
+
   double productPriceCalculator() {
     if (this.productSize == ProductSize.CH)
-      return (20 + Random().nextInt(40)).toDouble();
+      return (20.toDouble());
     if (this.productSize == ProductSize.M)
-      return (40 + Random().nextInt(60)).toDouble();
+      return (40.toDouble());
     if (this.productSize == ProductSize.G)
-      return (60 + Random().nextInt(80)).toDouble();
+      return (60.toDouble());
     return 999.0;
   }
 }

@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:practica_integradora_uno/models/product_drinks.dart';
-import 'package:practica_integradora_uno/drinks/item_drinks_details.dart';
+import 'package:practica_integradora_uno/models/product_grains.dart';
+import 'package:practica_integradora_uno/grains/item_grains_details.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 import 'package:practica_integradora_uno/models/product_cart.dart';
 
-class ItemDrinks extends StatefulWidget {
-  ProductDrinks drink;
+class ItemGrains extends StatefulWidget {
+  ProductGrains grain;
   List<ProductCart> cartLista;
-  ItemDrinks({
+  ItemGrains({
     Key key,
-    @required this.drink,
+    @required this.grain,
     @required this.cartLista,
   }) : super(key: key);
 
   @override
-  _ItemDrinksState createState() => _ItemDrinksState();
+  _ItemGrainsState createState() => _ItemGrainsState();
 }
 
-class _ItemDrinksState extends State<ItemDrinks> {
+class _ItemGrainsState extends State<ItemGrains> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _openDetailDrinkPage,
+      onTap: _openDetailGrainsPage,
       child: Card(
         elevation: 4.0,
         margin: EdgeInsets.all(8.0),
@@ -33,7 +33,7 @@ class _ItemDrinksState extends State<ItemDrinks> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                    "${widget.drink.productTitle}",
+                    "${widget.grain.productTitle}",
                     style: TextStyle(fontSize: 22.0, color: coffeBlanco),
                     textAlign: TextAlign.center,
                     ),
@@ -41,7 +41,7 @@ class _ItemDrinksState extends State<ItemDrinks> {
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 5.0),
                     child: Text(
-                    "${widget.drink.productPrice}",
+                    "${widget.grain.productPrice}",
                     style: TextStyle(fontSize: 22.0, color: coffeAzulGrisaceoOscuro),
                     textAlign: TextAlign.center,
                     ),
@@ -57,7 +57,7 @@ class _ItemDrinksState extends State<ItemDrinks> {
                   bottomRight: Radius.circular(5.0),
                 ),
                 child: Image.network(
-                  "${widget.drink.productImage}",
+                  "${widget.grain.productImage}",
                   fit: BoxFit.fitHeight,
                   height: 180,
                 ),
@@ -67,7 +67,7 @@ class _ItemDrinksState extends State<ItemDrinks> {
             IconButton(
               icon: Icon(
                 Icons.favorite,
-                color: widget.drink.liked ? Colors.red : coffeAzulGrisaceoOscuro,
+                color: widget.grain.liked ? Colors.red : coffeAzulGrisaceoOscuro,
               ),
               onPressed: _productLiked,
               )
@@ -79,17 +79,17 @@ class _ItemDrinksState extends State<ItemDrinks> {
 
   void _productLiked(){
     setState(() {
-      widget.drink.liked = !widget.drink.liked;
+      widget.grain.liked = !widget.grain.liked;
     });
   }
 
-  void _openDetailDrinkPage() async {
+  void _openDetailGrainsPage() async {
     await Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => DrinkDetailPage(drink: widget.drink),
+      MaterialPageRoute(builder: (context) => GrainsDetailPage(grain: widget.grain),
       ),
     ).then((updateProducts) {
       setState(() {
-        widget.drink = ProductDrinks.setDrink(updateProducts.drinks);
+        widget.grain = ProductGrains.setGrain(updateProducts.grains);
         //if(updateProducts.cart != null)
           //widget.cartLista.add(updateProducts.cart);
       });
@@ -98,3 +98,5 @@ class _ItemDrinksState extends State<ItemDrinks> {
   }
 
 }
+
+

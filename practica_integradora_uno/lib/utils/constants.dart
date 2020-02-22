@@ -12,7 +12,7 @@ const String PROFILE_SETTINGS = "Ajustes";
 const String PROFILE_NAME = "Anna Doe";
 const String PROFILE_EMAIL = "anna@doe.com";
 const String PROFILE_PICTURE =
-    "https://dkpp.go.id/wp-content/uploads/2018/10/photo.jpg";
+    "https://randomuser.me/api/portraits/women/72.jpg";
 
 // app
 const Color PRIMARY_COLOR = Colors.blue;

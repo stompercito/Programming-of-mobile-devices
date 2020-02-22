@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practica_integradora_uno/utils/constants.dart';
+import 'package:practica_integradora_uno/initial/init.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key key}) : super(key: key);
@@ -80,7 +81,11 @@ class Profile extends StatelessWidget {
                   Expanded(
                     child: RaisedButton(
                       child: Text(PROFILE_LOGOUT),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => InitPage()),
+                      );
+                      },
                     ),
                   ),
                 ],

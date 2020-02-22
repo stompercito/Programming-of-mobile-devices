@@ -17,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: coffeAzulOscuro,
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -35,6 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                 controller: _usernameController,
                 decoration: InputDecoration(
                   labelText: 'Nombre completo',
+                  labelStyle: TextStyle(color: Colors.white, fontSize: 16.0),
                 ),
               ),
             ),
@@ -45,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                 controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Password',
+                  labelStyle: TextStyle(color: Colors.white, fontSize: 16.0),
                 ),
                 obscureText: true,
               ),

@@ -14,7 +14,6 @@ class ItemHome extends StatelessWidget {
     return Card(
       elevation: 4.0,
       margin: EdgeInsets.all(8.0),
-      color: Colors.grey[300],
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[

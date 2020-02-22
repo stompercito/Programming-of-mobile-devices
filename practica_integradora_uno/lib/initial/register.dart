@@ -17,6 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: coffeAzulOscuro,
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -35,6 +36,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _usernameController,
                 decoration: InputDecoration(
                   labelText: 'Nombre completo',
+                  labelStyle: TextStyle(color: Colors.white, fontSize: 16.0),
                 ),
               ),
             ),
@@ -45,6 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: _usernameController,
                 decoration: InputDecoration(
                   labelText: 'Email',
+                  labelStyle: TextStyle(color: Colors.white, fontSize: 16.0),
                 ),
               ),
             ),
