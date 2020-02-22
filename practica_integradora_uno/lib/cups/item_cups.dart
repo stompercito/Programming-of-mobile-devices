@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practica_integradora_uno/models/listOfProducts.dart';
 import 'package:practica_integradora_uno/models/product_cups.dart'; 
 import 'package:practica_integradora_uno/cups/item_cups_details.dart'; 
-import 'package:practica_integradora_uno/models/product_cart.dart';
-import 'package:practica_integradora_uno/models/product_grains.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
-import 'package:practica_integradora_uno/cart/cart.dart';
 
 class ItemCups extends StatefulWidget {
   ProductCups cups;
@@ -44,7 +41,7 @@ class _ItemCupsState extends State<ItemCups> {
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 5.0),
                     child: Text(
-                    "${widget.cups.productPrice}",
+                    "${widget.cups.productPrice} MX\$",
                     style: TextStyle(fontSize: 22.0, color: coffeAzulGrisaceoOscuro),
                     textAlign: TextAlign.center,
                     ),

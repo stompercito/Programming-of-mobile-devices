@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:practica_integradora_uno/models/listOfProducts.dart';
 import 'package:practica_integradora_uno/models/product_drinks.dart';
 import 'package:practica_integradora_uno/drinks/item_drinks_details.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
-import 'package:practica_integradora_uno/models/product_cart.dart';
 
 class ItemDrinks extends StatefulWidget {
   ProductDrinks drink;
-  List<ProductCart> cartLista;
+  ProductList producto;
   ItemDrinks({
     Key key,
     @required this.drink,
-    @required this.cartLista,
+    @required this.producto,
   }) : super(key: key);
 
   @override
@@ -41,7 +41,7 @@ class _ItemDrinksState extends State<ItemDrinks> {
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 5.0),
                     child: Text(
-                    "${widget.drink.productPrice}",
+                    "${widget.drink.productPrice} MX\$",
                     style: TextStyle(fontSize: 22.0, color: coffeAzulGrisaceoOscuro),
                     textAlign: TextAlign.center,
                     ),
@@ -85,10 +85,11 @@ class _ItemDrinksState extends State<ItemDrinks> {
 
   void _openDetailDrinkPage() async {
     await Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => DrinkDetailPage(drink: widget.drink),
+      MaterialPageRoute(builder: (context) => DrinkDetailPage(drink: widget.drink, productoNuevo: widget.producto),
       ),
     ).then((updateProducts) {
       setState(() {
+        widget.producto = updateProducts;
         widget.drink = ProductDrinks.setDrink(updateProducts.drinks);
         //if(updateProducts.cart != null)
           //widget.cartLista.add(updateProducts.cart);

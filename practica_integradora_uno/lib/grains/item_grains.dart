@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:practica_integradora_uno/models/product_grains.dart';
 import 'package:practica_integradora_uno/grains/item_grains_details.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
-import 'package:practica_integradora_uno/models/product_cart.dart';
+import 'package:practica_integradora_uno/models/listOfProducts.dart';
 
 class ItemGrains extends StatefulWidget {
   ProductGrains grain;
-  List<ProductCart> cartLista;
+  ProductList producto;
   ItemGrains({
     Key key,
     @required this.grain,
-    @required this.cartLista,
+    @required this.producto,
   }) : super(key: key);
 
   @override
@@ -41,7 +41,7 @@ class _ItemGrainsState extends State<ItemGrains> {
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 5.0),
                     child: Text(
-                    "${widget.grain.productPrice}",
+                    "${widget.grain.productPrice} MX\$",
                     style: TextStyle(fontSize: 22.0, color: coffeAzulGrisaceoOscuro),
                     textAlign: TextAlign.center,
                     ),
@@ -85,10 +85,11 @@ class _ItemGrainsState extends State<ItemGrains> {
 
   void _openDetailGrainsPage() async {
     await Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => GrainsDetailPage(grain: widget.grain),
+      MaterialPageRoute(builder: (context) => GrainsDetailPage(grain: widget.grain, productoNuevo: widget.producto),
       ),
     ).then((updateProducts) {
       setState(() {
+        widget.producto = updateProducts;
         widget.grain = ProductGrains.setGrain(updateProducts.grains);
         //if(updateProducts.cart != null)
           //widget.cartLista.add(updateProducts.cart);

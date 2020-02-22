@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:practica_integradora_uno/cart/cart.dart';
 import 'package:practica_integradora_uno/models/product_grains.dart';
-import 'package:practica_integradora_uno/models/listOfProducts.dart';
+import 'package:practica_integradora_uno/models/product_cart.dart';
 import 'package:practica_integradora_uno/profile.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
+import 'package:practica_integradora_uno/models/listOfProducts.dart';
 import 'package:practica_integradora_uno/payment.dart';
+import 'package:practica_integradora_uno/models/product_repository.dart';
+
 
 class GrainsDetailPage extends StatefulWidget {
   ProductGrains grain;
@@ -12,6 +16,7 @@ class GrainsDetailPage extends StatefulWidget {
   GrainsDetailPage({
     Key key,
     @required this.grain,
+    @required this.productoNuevo,
   }) : super(key: key);
 
   @override
@@ -24,13 +29,12 @@ class _DetailGrainsState extends State<GrainsDetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("${widget.grain.productTitle}", style: TextStyle(color: coffeBlanco),),
-        leading: IconButton(icon: Icon(Icons.arrow_back), 
-          onPressed: _backUpAndCart,
+        leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: _backUpAndCart,
         ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: _openCartPageOnly,
           ),
           IconButton(
             icon: Icon(Icons.person),
@@ -42,63 +46,238 @@ class _DetailGrainsState extends State<GrainsDetailPage> {
           ),
         ],
       ),
-      body: Card(
-      color: coffeNaranjaLigero62,
-      elevation: 4.0,
+      body: Container(
       margin: EdgeInsets.all(8.0),
-      child: Row(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Expanded(
-            child: Container(
-              child: Text(
+          Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 40.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  color: coffeNaranjaLigero62,
+                  width: 270,
+                  height: 200,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(5.0),
+                      bottomRight: Radius.circular(5.0),
+                    ),
+                    child: Image.network(
+                      "${widget.grain.productImage}",
+                      fit: BoxFit.scaleDown,
+                      height: 180,
+                    ),
+                  ),
+                ),
+                Container(
+                  color: coffeNaranjaLigero62,
+                  height: 200,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.favorite,
+                      color: widget.grain.liked ? Colors.red : coffeAzulGrisaceoOscuro,
+                    ),
+                  onPressed: _productLiked,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+          Padding(
+          padding: EdgeInsets.symmetric(vertical: 30.0),
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
                 "${widget.grain.productTitle}",
                 style: Theme.of(context)
                     .textTheme
                     .title
                     .copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
-              ),
+                ),
+              ],
             ),
-            flex: 2,
           ),
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(5.0),
-                bottomRight: Radius.circular(5.0),
-              ),
-              child: Image.network(
-                "${widget.grain.productImage}",
-                fit: BoxFit.fitHeight,
-                height: 180,
-              ),
+
+          Padding(
+          padding: EdgeInsets.symmetric(vertical: 1.0),
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 270,
+                  child: Text(
+                  "${widget.grain.productDescription}",
+                  textAlign: TextAlign.justify,
+                  style: TextStyle(fontSize: 15.0),
+                  ),
+                ),   
+              ],
             ),
-            flex: 3,
           ),
-          IconButton(
-            icon: Icon(
-              Icons.favorite,
-              color: widget.grain.liked ? Colors.red : coffeAzulGrisaceoOscuro,
+
+          Padding(
+          padding: EdgeInsets.symmetric(vertical: 20.0),
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 135,
+                  child: Text(
+                  "COLORES DISPONIBLES",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 10.0),
+                  ),
+                ),  
+                Container(
+                  width: 140,
+                  child: Text(
+                  "¨PRECIO",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(fontSize: 10.0),
+                  ),
+                ),    
+              ],
             ),
-            onPressed: _productLiked,
-            )
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 46.0),
+            child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  width: 74,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(width: 2, color: coffeAzulOscuro)
+                  ),
+                  child: MaterialButton(
+                    child: Text(
+                        "250 G",
+                        style: TextStyle(fontSize: 10.0, color: coffeAzulGrisaceoOscuro),
+                        textAlign: TextAlign.center,
+                        ),
+                  onPressed: _cuartoButton,
+                  ),
+                ),  
+                Container(
+                  width: 74,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(width: 2, color: coffeAzulOscuro)
+                  ),
+                  child: MaterialButton(
+                    child: Text(
+                        "1K",
+                        style: TextStyle(fontSize: 10.0, color: coffeAzulGrisaceoOscuro),
+                        textAlign: TextAlign.center,
+                        ),
+                  onPressed: _kiloButton,
+                  ),
+                ),  
+                Container(
+                  width: 140,
+                  child: Text("${widget.grain.productPrice}",
+                    textAlign: TextAlign.end,
+                  )
+                ),   
+              ],
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 50.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                MaterialButton(
+                  color: coffeNaranjaGrisaceoClaro,
+                  child: Text("AGREGAR AL CARRITO"),
+                  onPressed: _openCartPage,
+                  ),
+                Padding(padding: EdgeInsets.symmetric(horizontal: 10.0)),
+                MaterialButton(
+                  child: Text("COMPRAR AHORA"),
+                  color: coffeNaranjaGrisaceoClaro,
+                  onPressed: _openPaymentPage,
+                  ),
+              ],
+            ),
+          ),
+          
         ],
       ),
+      
     ),
+    
+    
     );
   }
 
-  void _productLiked(){
-    //widget.productoNuevo.cups.liked = widget.cup.liked;
+  void _openPaymentPage(){
+    Navigator.of(context).push(        
+      MaterialPageRoute(builder: (context) => Payment(),
+      ),
+    );
+  }
+
+  void _openCartPageOnly() async{
+    await Navigator.of(context).push(        
+      MaterialPageRoute(builder: (context) => Cart(producto: widget.productoNuevo),
+      ),
+    ).then((updateProducts) {
+      widget.productoNuevo = updateProducts;
+    });
+
+  }
+  
+  void _openCartPage() async{
+    await Navigator.of(context).push(        
+      MaterialPageRoute(builder: (context) => Cart(producto: ProductList.setCartList(widget.productoNuevo, widget.productoNuevo.cartLista ,ProductCart.addToCart(widget.grain.productTitle, widget.grain.productAmount, widget.grain.productPrice, ProductType.TAZAS, widget.grain.productImage, widget.grain.liked ))),
+      ),
+    ).then((updateProducts) {
+      widget.productoNuevo = updateProducts;
+    });
+
+  }
+  
+  void _cuartoButton(){
+    //widget.productoNuevo.grains.liked = widget.grain.liked;
     setState(() {
-      widget.grain.liked = !widget.grain.liked;
-      widget.productoNuevo = ProductList.setGrain(widget.productoNuevo, widget.grain);   
+      widget.grain.productWeight = ProductWeight.CUARTO;  
+      widget.productoNuevo = ProductList.setGrain(widget.productoNuevo, widget.grain);
+      widget.grain = widget.productoNuevo.grains;
+    });
+  }
+
+  void _kiloButton(){
+    //widget.productoNuevo.grains.liked = widget.grain.liked;
+    setState(() {
+      widget.grain.productWeight = ProductWeight.KILO;    
+      widget.productoNuevo = ProductList.setGrain(widget.productoNuevo, widget.grain); 
+      widget.grain = widget.productoNuevo.grains; 
+    });
+  }
+
+  void _productLiked(){
+    //widget.productoNuevo.grains.liked = widget.grain.liked;
+    setState(() {
+      widget.grain.liked = !widget.grain.liked; 
     });
   }
 
   void _backUpAndCart(){
-    //widget.productoNuevo.cups.liked = widget.cup.liked;
+    //widget.productoNuevo.grains.liked = widget.grain.liked;
       widget.productoNuevo = ProductList.setGrain(widget.productoNuevo, widget.grain);
       Navigator.of(context).pop(widget.productoNuevo);
 

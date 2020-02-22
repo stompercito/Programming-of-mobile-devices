@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:practica_integradora_uno/home/item_home.dart';
-import 'package:practica_integradora_uno/models/listOfProducts.dart';
-
-import 'package:practica_integradora_uno/drinks/drinks_page.dart';
-
-import 'package:practica_integradora_uno/cups/cups_page.dart';
-
-import 'package:practica_integradora_uno/grains/grains_page.dart';
-
 import 'package:practica_integradora_uno/profile.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 

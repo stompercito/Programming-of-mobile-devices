@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:practica_integradora_uno/drinks/item_drinks.dart';
 import 'package:practica_integradora_uno/models/listOfProducts.dart';
-
+import 'package:practica_integradora_uno/cart/cart.dart';
 import 'package:practica_integradora_uno/profile.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 
 class DrinksPage extends StatelessWidget {
-  final ProductList products;
+  ProductList products;
   DrinksPage({
     Key key,
     @required this.products,
@@ -23,7 +23,14 @@ class DrinksPage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () async{ 
+            await Navigator.of(context).push(        
+              MaterialPageRoute(builder: (context) => Cart(producto: products),
+              ),
+            ).then((updateProducts) {
+              products = updateProducts;
+            });
+            },
           ),
           IconButton(
             icon: Icon(Icons.person),
@@ -40,7 +47,7 @@ class DrinksPage extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ItemDrinks(
             drink: products.drinksLista[index],
-            cartLista: products.cartLista,
+            producto: products,
           );
         },
       ),

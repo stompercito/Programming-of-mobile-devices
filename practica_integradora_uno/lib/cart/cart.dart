@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practica_integradora_uno/cart/item_cart.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 import 'package:practica_integradora_uno/models/listOfProducts.dart';
-import 'package:practica_integradora_uno/models/product_cart.dart';
+import 'package:practica_integradora_uno/payment.dart';
 import 'package:practica_integradora_uno/profile.dart';
 
 class Cart extends StatefulWidget {
@@ -58,9 +58,43 @@ class _CartState extends State<Cart> {
               },
             ),
           ),
-          Positioned(
-            bottom: 0,
-            child: Text("Total: \$$_total"),
+          Container(
+            child: Positioned(
+              bottom: 0,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    width: 140,
+                    child: Text("Total",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 22.0, color: coffeAzulGrisaceoOscuro),
+                    ),
+                  ), 
+                  Container(
+                    width: 140,
+                    child: Text("$_total MX\$",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 22.0, color: coffeAzulGrisaceoOscuro),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            child: Positioned(
+              bottom: 0,
+              right: 140,
+              child: Column(
+                children: <Widget>[
+                  MaterialButton( 
+                  color: coffeNaranjaGrisaceoClaro,
+                  child: Text("PAGAR"),
+                  onPressed: _openPaymentPage,
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -71,6 +105,13 @@ class _CartState extends State<Cart> {
     setState(() {
       _total += newItemPrice;
     });
+  }
+
+  void _openPaymentPage(){
+    Navigator.of(context).push(        
+      MaterialPageRoute(builder: (context) => Payment(),
+      ),
+    );
   }
 
   void _backUpAndCart(){

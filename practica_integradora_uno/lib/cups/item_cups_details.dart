@@ -9,7 +9,6 @@ import 'package:practica_integradora_uno/payment.dart';
 import 'package:practica_integradora_uno/models/product_repository.dart';
 
 
-
 class CupsDetailPage extends StatefulWidget {
   ProductCups cup;
   ProductList productoNuevo;
@@ -18,7 +17,6 @@ class CupsDetailPage extends StatefulWidget {
     Key key,
     @required this.cup,
     @required this.productoNuevo,
-
   }) : super(key: key);
 
   @override
@@ -252,7 +250,7 @@ class _DetailCupsState extends State<CupsDetailPage> {
   
   void _openCartPage() async{
     await Navigator.of(context).push(        
-      MaterialPageRoute(builder: (context) => Cart(producto: ProductList.setCartList(widget.productoNuevo, widget.productoNuevo.cartLista ,ProductCart.addToCart("${widget.cup.productTitle}", widget.cup.productAmount, widget.cup.productPrice, ProductType.TAZAS ))),
+      MaterialPageRoute(builder: (context) => Cart(producto: ProductList.setCartList(widget.productoNuevo, widget.productoNuevo.cartLista ,ProductCart.addToCart(widget.cup.productTitle, widget.cup.productAmount, widget.cup.productPrice, ProductType.TAZAS, widget.cup.productImage, widget.cup.liked))),
       ),
     ).then((updateProducts) {
       widget.productoNuevo = updateProducts;
