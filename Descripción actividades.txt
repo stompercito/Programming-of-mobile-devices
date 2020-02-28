@@ -2,4 +2,7 @@ Actividad 1... Boton
 Actividad 2... Lista de peliculas
 Actividad 3... Columnas y filas
 Actividad 4... Ruteo
-Actividad 4... Pluggins de http y conectivity
+Actividad 5... Pluggins de http y conectivity
+Actividad 6... Streams
+Actividad 7... Ejercicio Forms y BLoC
+Actividad 8... Persistencia de datos. HIVE
