@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:practica_integradora_uno/home/item_home.dart';
 import 'package:practica_integradora_uno/profile.dart';
 import 'package:practica_integradora_uno/utils/colors.dart';
 

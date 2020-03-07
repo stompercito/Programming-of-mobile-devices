@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:practica_integradora_uno/home/item_home.dart';
-import 'package:practica_integradora_uno/models/product_repository.dart';
-import 'package:practica_integradora_uno/models/product_cart.dart';
 import 'package:practica_integradora_uno/models/listOfProducts.dart';
 import 'package:practica_integradora_uno/drinks/drinks_page.dart';
 import 'package:practica_integradora_uno/cups/cups_page.dart';
