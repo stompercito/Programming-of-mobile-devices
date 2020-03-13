@@ -6,4 +6,5 @@ Actividad 5... Pluggins de http y conectivity
 Actividad 6... Streams
 Actividad 7... Ejercicio Forms y BLoC
 Actividad 8... Persistencia de datos. HIVE
-Actividad 9... Login Firebase
+Actividad 9... Login Firebase (No terminado)
+Actividad 10... Autentificacion biometrica
