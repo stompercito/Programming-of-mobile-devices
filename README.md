@@ -16,5 +16,7 @@ Android and IOS programming
 
 #Homework description
 
--Tarea 1... App con tres pantalla ruteadas ; Task 1 ... App with three routed screens
--Tarea 2... Serie de tutoriales para crear una App ; Task 2 ... Series of tutorials to create an App
+- Tarea 1... App con tres pantalla ruteadas ; Task 1 ... App with three routed screens
+- Tarea 2... Serie de tutoriales para crear una App ; Task 2 ... Series of tutorials to create an App
+
+#Practices are explain in the inside readme
