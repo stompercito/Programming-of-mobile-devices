@@ -1,6 +1,8 @@
 # Programming-of-mobile-devices
 Android and IOS programming
 
+#Every activity has a video with the demo.
+
 #Activity description
 
 - Actividad 1... Boton ; Activity 1 ... Button
